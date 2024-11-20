@@ -34,7 +34,7 @@ A replica of the original game is available to play online <a href="http://users
 ## HOW TO USE
 #### 1º - Clone the repository
 ```bash
-git clone git@github.com:jotavare/cub3d.git
+git clone git@github.com:RafaelKitoco/cub3d.git
 ```
 
 #### 2º - Enter the project folder and run `make mlx`
