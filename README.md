@@ -142,8 +142,8 @@ C 225,30,0
 ## TEAM
 | GitHub | 42 Intra |
 | :--: | :--: |
-| [Rafael Pambo](https://github.com/RafaelKitoco)	| [psotto-m](https://profile.intra.42.fr/users/rpambo) |
-| [Carmo Da Gama](https://github.com/CarmoDaGama)	| [jotavare](https://profile.intra.42.fr/users/cgama) |
+| [Rafael Pambo](https://github.com/RafaelKitoco)	| [rpambo](https://profile.intra.42.fr/users/rpambo) |
+| [Carmo Da Gama](https://github.com/CarmoDaGama)	| [cgama](https://profile.intra.42.fr/users/cgama) |
 
 ## NORMINETTE
 > At 42 School, it is expected that almost every project is written following the Norm, which is the coding standard of the school.
