@@ -29,7 +29,7 @@ This project is inspired by the world-famous Wolfenstein 3D game, by the famous 
 A replica of the original game is available to play online <a href="http://users.atw.hu/wolf3d/">here</a>.
 
 - [Subject](https://github.com/jotavare/netpractice/blob/main/subject/en_subject_cub3d.pdf) `PDF`
-- [References](https://github.com/jotavare/42-resources#04-cub3d) `GitHub`
+- [References](https://github.com/RafaelKitoco/42-resources#04-cub3d) `GitHub`
 
 ## HOW TO USE
 #### 1º - Clone the repository
@@ -142,8 +142,8 @@ C 225,30,0
 ## TEAM
 | GitHub | 42 Intra |
 | :--: | :--: |
-| [Pedro Mota](https://github.com/peterbikes)	| [psotto-m](https://profile.intra.42.fr/users/psotto-m) |
-| [João Oliveira](https://github.com/jotavare)	| [jotavare](https://profile.intra.42.fr/users/jotavare) |
+| [Rafael Pambo](https://github.com/RafaelKitoco)	| [psotto-m](https://profile.intra.42.fr/users/rpambo) |
+| [Carmo Da Gama](https://github.com/CarmoDaGama)	| [jotavare](https://profile.intra.42.fr/users/cgama) |
 
 ## NORMINETTE
 > At 42 School, it is expected that almost every project is written following the Norm, which is the coding standard of the school.
