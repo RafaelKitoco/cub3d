@@ -35,6 +35,16 @@ int	keypress(int keycode, t_vars *vars)
 	return (0);
 }
 
+int	close_game(t_vars *vars)
+{
+	ft_printf("Closing program..\n");
+	mlx_destroy_window(vars->mlx, vars->win);
+	mlx_destroy_display(vars->mlx);
+	free(vars->mlx);
+	exit(0);
+	return (0);
+}
+
 int	keyrelease(int keycode, t_vars *vars)
 {
 	(void)vars;

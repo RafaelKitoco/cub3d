@@ -22,7 +22,7 @@
 # include <mlx.h>
 # include <mlx_int.h>
 # include "keys.h"
-# include "libft.h"
+# include "../libft/include/libft.h"
 
 # define screenWidth 1920
 # define screenHeight 1080
@@ -88,10 +88,9 @@ void	print_colors(t_vars *vars);
 void	print_map(t_vars *vars);
 int		keypress(int keycode, t_vars *vars);
 int		keyrelease(int keycode, t_vars *vars);
+int     close_game(t_vars *vars);
 int		destroy(int keycode, t_vars *vars);
 int		motion(int button, int x, int y, t_vars *vars);
-char	*ft_strdup(const char *s1);
-char	*ft_itoa(int n);
 void	update_player_position(t_vars *vars, int key_pressed);
 void	move_player(t_vars *vars, double moveSpeed);
 void	rotate_player(t_vars *vars, double rotSpeed);

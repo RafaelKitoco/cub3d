@@ -17,7 +17,7 @@ static void *load_texture(void *mlx, char *path) {
     int width, height;
     void *img = mlx_xpm_file_to_image(mlx, path, &width, &height);
     if (!img) {
-        fprintf(stderr, "Error loading texture: %s\n", path);
+        ft_printf("Error loading texture: %s\n", path);
         exit(1);
     }
     return img;
@@ -27,13 +27,13 @@ t_vars *root_init(t_vars *vars) {
     // Inicializa a janela do MiniLibX
     vars->mlx = mlx_init();
     if (!vars->mlx) {
-        fprintf(stderr, "Error initializing MiniLibX\n");
+        ft_printf("Error initializing MiniLibX\n");
         exit(1);  // Encerra o programa se o MiniLibX não for inicializado
     }
 
     vars->win = mlx_new_window(vars->mlx, screenWidth, screenHeight, "Raycaster");
     if (!vars->win) {
-        fprintf(stderr, "Error creating window\n");
+        ft_printf("Error creating window\n");
         exit(1);  // Encerra o programa se a janela não for criada
     }
 

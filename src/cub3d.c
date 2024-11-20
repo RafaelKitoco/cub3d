@@ -89,6 +89,7 @@ int	main(int argc, char *argv[])
 	}
 	draw_frame(vars);
 	mlx_hook(vars->win, 2, 1L << 0, keypress, vars);
+	mlx_hook(vars->win, 17, 0, close_game, vars);
 	mlx_loop(vars->mlx);
 	free(vars);
 	return (0);

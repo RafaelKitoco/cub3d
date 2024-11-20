@@ -112,7 +112,7 @@ static void parse_map(char **lines, t_vars *vars, int start) {
                 vars->map.worldMap[i][j] = 0;
             else if (find_firts(lines[start + i][j])) {
                 /*if (playerCount > 0) {
-                    fprintf(stderr, "Error: Mapa deve ter exatamente uma posição inicial do jogador.\n");
+                    ft_printf( "Error: Mapa deve ter exatamente uma posição inicial do jogador.\n");
                     exit(EXIT_FAILURE);
                 }*/
                 vars->player.posX = i;
@@ -139,7 +139,7 @@ static void parse_map(char **lines, t_vars *vars, int start) {
         }
     }
     /*if (playerCount != 1) {
-        fprintf(stderr, "Error: Mapa deve ter exatamente uma posição inicial do jogador.\n");
+        ft_printf( "Error: Mapa deve ter exatamente uma posição inicial do jogador.\n");
         exit(EXIT_FAILURE);
     }*/
 }
@@ -249,7 +249,7 @@ void parse_config(char *path, t_vars *vars) {
     parse_map(lines, vars, i);
 
     /*if (!is_map_closed(vars)) {
-        fprintf(stderr, "Error: Mapa não está cercado por paredes.\n");
+        ft_printf( "Error: Mapa não está cercado por paredes.\n");
         exit(EXIT_FAILURE);
     }*/
 

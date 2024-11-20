@@ -6,7 +6,7 @@ static void pad_lines_with_spaces(char **lines, int max_length) {
         if (len < max_length) {
             char *padded_line = malloc(max_length + 1);
             if (!padded_line) {
-                fprintf(stderr, "Error: Failed to allocate memory for padded line.\n");
+                ft_printf( "Error: Failed to allocate memory for padded line.\n");
                 exit(EXIT_FAILURE);
             }
             strcpy(padded_line, lines[i]);
@@ -45,28 +45,28 @@ static void sanitize_map_lines(char **lines) {
 }
 
 
-static char **ft_split(char *str, char delimiter) {
-    int i = 0, j = 0, k = 0, count = 1;
-    while (str[i]) {
-        if (str[i] == delimiter)
-            count++;
-        i++;
-    }
+// static char **ft_split(char *str, char delimiter) {
+//     int i = 0, j = 0, k = 0, count = 1;
+//     while (str[i]) {
+//         if (str[i] == delimiter)
+//             count++;
+//         i++;
+//     }
 
-    char **result = malloc((count + 1) * sizeof(char *));
-    result[count] = NULL;
+//     char **result = malloc((count + 1) * sizeof(char *));
+//     result[count] = NULL;
 
-    for (i = 0; i < count; i++) {
-        result[i] = malloc(256);
-        j = 0;
-        while (str[k] && str[k] != delimiter)
-            result[i][j++] = str[k++];
-        result[i][j] = '\0';
-        k++;
-    }
+//     for (i = 0; i < count; i++) {
+//         result[i] = malloc(256);
+//         j = 0;
+//         while (str[k] && str[k] != delimiter)
+//             result[i][j++] = str[k++];
+//         result[i][j] = '\0';
+//         k++;
+//     }
 
-    return result;
-}
+//     return result;
+// }
 
 static void parse_color(const char *str, int *color) {
     char **colors = ft_split((char *)str, ',');
@@ -106,7 +106,7 @@ int	find_firts(char c)
 static void parse_map(char **lines, t_vars *vars, int start) {
     vars->map.worldMap = malloc(vars->map.height * sizeof(int *));
     if (!vars->map.worldMap) {
-        fprintf(stderr, "Error: Failed to allocate memory for map.\n");
+        ft_printf( "Error: Failed to allocate memory for map.\n");
         exit(EXIT_FAILURE);
     }
 
@@ -114,7 +114,7 @@ static void parse_map(char **lines, t_vars *vars, int start) {
     for (int i = 0; i < vars->map.height; i++) {
         vars->map.worldMap[i] = malloc(vars->map.width * sizeof(int));
         if (!vars->map.worldMap[i]) {
-            fprintf(stderr, "Error: Failed to allocate memory for map row.\n");
+            ft_printf( "Error: Failed to allocate memory for map row.\n");
             exit(EXIT_FAILURE);
         }
 
@@ -157,7 +157,7 @@ static void parse_map(char **lines, t_vars *vars, int start) {
     }
 
     if (playerCount != 1) {
-        fprintf(stderr, "Error: Mapa deve ter exatamente uma posição inicial do jogador.\n");
+        ft_printf( "Error: Mapa deve ter exatamente uma posição inicial do jogador.\n");
         exit(EXIT_FAILURE);
     }
 }
@@ -267,7 +267,7 @@ void parse_config(char *path, t_vars *vars) {
     parse_map(lines, vars, i);
 
     if (!is_map_closed(vars)) {
-        fprintf(stderr, "Error: Mapa não está cercado por paredes.\n");
+        ft_printf( "Error: Mapa não está cercado por paredes.\n");
         exit(EXIT_FAILURE);
     }
 

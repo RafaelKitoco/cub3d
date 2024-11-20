@@ -11,7 +11,7 @@ GREEN		=	\033[0;32m
 RED 		=	\033[0;31m
 YELLOW		=	\033[0;33m
 RESET		=	\033[0m
-SRC			=	src/cub3d.c src/utilities.c src/events.c src/update.c \
+SRC			=	src/cub3d.c src/events.c src/update.c \
 				src/move.c src/dispaly_debug.c src/draw.c src/raycasting.c src/root_init.c \
 				src/parse_config.c src/debug.c
 
@@ -29,7 +29,7 @@ $(MLX):
 
 $(LFT):
 			@echo "$(RED)[ .. ] Compiling Libft..$(RESET)"
-			@make -s -C libft
+			@make -s -C libft bonus
 			@echo "$(GREEN)[ OK ]$(RESET) $(YELLOW)Libft ready!$(RESET)"
 
 src/%.o:	src/%.c
