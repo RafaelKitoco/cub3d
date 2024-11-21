@@ -39,13 +39,20 @@ static void	*manage_memory(void *ptr, bool clean)
 
 	if (clean)
 	{
-		ft_lstclear(&garbage_list, ft_del);
+		ft_printf("Clearing garbage list...\n");
+        ft_lstclear(&garbage_list, ft_del);
+        ft_printf("Garbage list cleared.\n");
 		return (NULL);
 	}
 	else
-	{	
+	{	t_list *new_node = ft_new(ptr);
+        if (!new_node || !ptr)
+        {
+            ft_printf("Failed to allocate memory for new node.\n");
+            return (NULL);
+        }
 		set_signals();
-		ft_lstadd_back(&garbage_list, ft_new(ptr));
+		ft_lstadd_back(&garbage_list, new_node);
 		return (ptr);
 	}
 }

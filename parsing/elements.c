@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   elements.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 16:00:36 by aconceic          #+#    #+#             */
-/*   Updated: 2024/09/20 15:33:50 by aconceic         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "../../includes/cube.h"
 
@@ -33,7 +22,7 @@ void	get_texture_and_color(t_gm *game, char	**matriz)
 			game->map->fc_str = get_element_info(m[i]);
 		else if (m[i] && (ft_strstr(m[i], "C ")) && !game->map->cc_str)
 			game->map->cc_str = get_element_info(m[i]);
-		i ++;
+		i++;
 	}
 }
 
@@ -42,7 +31,6 @@ void	get_texture_and_color(t_gm *game, char	**matriz)
  * @brief Extracts the infomation of the PATH of the the texture
  * and trim spaces at the end.
  * @return A trim extracted without spaces at the end
- */
 char	*get_element_info(char *line)
 {
 	int		j;
@@ -73,7 +61,6 @@ char	*get_element_info(char *line)
 /**
  * @brief
  * @param m Matriz
- */
 bool	is_texture_and_color_valid(t_gm *game, char **m)
 {
 	int	i;
@@ -107,7 +94,6 @@ bool	is_texture_and_color_valid(t_gm *game, char **m)
  * @brief Check if a word is separated by space
  * example -> "This is Spaced" ; "ThisIsNotSpaced"
  * @return false for not spaced or !str, true for spaced.
- */
 bool	is_spaced(char *str)
 {
 	int	i;

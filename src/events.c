@@ -31,13 +31,14 @@ int	keypress(int keycode, t_vars *vars)
 	else if (keycode == DOWN)
 		update_player_position(vars, keycode);
 	else if (keycode == ESC)
-		exit(0);
+		close_game(vars);
 	return (0);
 }
 
 int	close_game(t_vars *vars)
 {
 	ft_printf("Closing program..\n");
+	//ft_free_collector();
 	mlx_destroy_window(vars->mlx, vars->win);
 	mlx_destroy_display(vars->mlx);
 	free(vars->mlx);

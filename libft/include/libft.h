@@ -6,7 +6,7 @@
 /*   By: cgama <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 11:42:35 by cgama             #+#    #+#             */
-/*   Updated: 2024/05/31 11:42:40 by cgama            ###   ########.fr       */
+/*   Updated: 2024/11/21 15:31:42 by cgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,8 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_malloc(size_t count, size_t size);
 void	ft_free_collector(void);
+void	*ft_realloc(void *ptr, size_t newsize);
+void	ft_memdel(void **ap);
 /* ---------------	NUMEROS		--------------- */
 int		ft_atoi(const char *str);
 char	*ft_itoa(int n);

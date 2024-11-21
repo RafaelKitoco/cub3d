@@ -84,13 +84,13 @@ int	main(int argc, char *argv[])
 	vars = root_init(vars);
 	if (!vars)
 	{
-		free(vars);
+		//free(vars);
 		return (1);
 	}
 	draw_frame(vars);
 	mlx_hook(vars->win, 2, 1L << 0, keypress, vars);
 	mlx_hook(vars->win, 17, 0, close_game, vars);
 	mlx_loop(vars->mlx);
-	free(vars);
+	//free(vars);
 	return (0);
 }

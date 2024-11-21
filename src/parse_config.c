@@ -1,20 +1,45 @@
 #include "./headers/cub3d.h"
 
-static void pad_lines_with_spaces(char **lines, int max_length) {
+static char **m_split(char *str, char delimiter) {
+    int i = 0, j = 0, k = 0, count = 1;
+    while (str[i]) {
+        if (str[i] == delimiter)
+            count++;
+        i++;
+    }
+
+    char **result = malloc((count + 1) * sizeof(char *));
+    result[count] = NULL;
+
+    for (i = 0; i < count; i++) {
+        result[i] = malloc(256);
+        j = 0;
+        while (str[k] && str[k] != delimiter)
+            result[i][j++] = str[k++];
+        result[i][j] = '\0';
+        k++;
+    }
+
+    return result;
+}
+
+static void pad_lines_with_spaces(char **lines, int max_length) 
+{
     for (int i = 0; lines[i]; i++) {
-        int len = strlen(lines[i]);
+        int len = ft_strlen(lines[i]);
         if (len < max_length) {
             char *padded_line = malloc(max_length + 1);
             if (!padded_line) {
                 ft_printf( "Error: Failed to allocate memory for padded line.\n");
                 exit(EXIT_FAILURE);
             }
-            strcpy(padded_line, lines[i]);
+            ft_strlcpy(padded_line, lines[i], len + 1);
             for (int j = len; j < max_length; j++) {
                 padded_line[j] = ' ';
             }
             padded_line[max_length] = '\0';
             //free(lines[i]);
+            ft_printf("4-lines[%i] = aqui\n", i);
             lines[i] = padded_line;
         }
     }
@@ -33,47 +58,23 @@ static void sanitize_map_lines(char **lines) {
     for (int i = 0; lines[i]; i++) {
         // Remover espaços e tabulações do início
         while (lines[i][0] == ' ' || lines[i][0] == '\t') {
-            memmove(lines[i], lines[i] + 1, strlen(lines[i]));
+            ft_memmove(lines[i], lines[i] + 1, ft_strlen(lines[i]));
         }
         
         // Remover espaços e tabulações do final
-        int len = strlen(lines[i]);
+        int len = ft_strlen(lines[i]);
         while (len > 0 && (lines[i][len - 1] == ' ' || lines[i][len - 1] == '\t')) {
             lines[i][--len] = '\0';
         }
     }
 }
 
-
-// static char **ft_split(char *str, char delimiter) {
-//     int i = 0, j = 0, k = 0, count = 1;
-//     while (str[i]) {
-//         if (str[i] == delimiter)
-//             count++;
-//         i++;
-//     }
-
-//     char **result = malloc((count + 1) * sizeof(char *));
-//     result[count] = NULL;
-
-//     for (i = 0; i < count; i++) {
-//         result[i] = malloc(256);
-//         j = 0;
-//         while (str[k] && str[k] != delimiter)
-//             result[i][j++] = str[k++];
-//         result[i][j] = '\0';
-//         k++;
-//     }
-
-//     return result;
-// }
-
 static void parse_color(const char *str, int *color) {
-    char **colors = ft_split((char *)str, ',');
+    char **colors = m_split((char *)str, ',');
     if (colors) {
-        color[0] = atoi(colors[0]);
-        color[1] = atoi(colors[1]);
-        color[2] = atoi(colors[2]);
+        color[0] = ft_atoi(colors[0]);
+        color[1] = ft_atoi(colors[1]);
+        color[2] = ft_atoi(colors[2]);
 
         for (int i = 0; colors[i] != NULL; i++) {
             free(colors[i]);
@@ -86,9 +87,9 @@ static void calculate_map_size(char **lines, int *width, int *height) {
     *height = 0;
     *width = 0;
     for (int i = 0; lines[i] != NULL; i++) {
-        if (strchr(lines[i], '1')) {
+        if (ft_strchr(lines[i], '1')) {
             (*height)++;
-            int line_length = strlen(lines[i]);
+            int line_length = ft_strlen(lines[i]);
             if (line_length > *width) {
                 *width = line_length;
             }
@@ -169,7 +170,7 @@ static int is_map_closed(t_vars *vars)
     { 
         for (int j = 0; j < vars->map.width; j++)
         { 
-            if (vars->map.worldMap[i][j] == 0 || strchr("NSEW", vars->map.worldMap[i][j]))
+            if (vars->map.worldMap[i][j] == 0 || ft_strchr("NSEW", vars->map.worldMap[i][j]))
             { 
                 if (i == 0 || i == vars->map.height - 1 || j == 0 || j == vars->map.width - 1 || vars->map.worldMap[i-1][j] == ' ' || vars->map.worldMap[i+1][j] == ' ' || vars->map.worldMap[i][j-1] == ' ' || vars->map.worldMap[i][j+1] == ' ')
                 {
@@ -210,8 +211,8 @@ void parse_config(char *path, t_vars *vars) {
 
     while ((bytes_read = read(fd, buffer, sizeof(buffer) - 1)) > 0) {
         buffer[bytes_read] = '\0';
-        line = realloc(line, strlen(line) + bytes_read + 1);
-        strcat(line, buffer);
+        line = ft_realloc(line, ft_strlen(line) + bytes_read + 1);
+        ft_strlcat(line, buffer,  ft_strlen(line) +  ft_strlen(buffer));
     }
 
     if (bytes_read == -1) {
@@ -224,7 +225,7 @@ void parse_config(char *path, t_vars *vars) {
     
     
     
-    char **lines = ft_split(line, '\n');
+    char **lines = m_split(line, '\n');
     sanitize_map_lines(lines);
     
     int n = 0;
@@ -246,7 +247,6 @@ void parse_config(char *path, t_vars *vars) {
         free(lines[i]);
         i++;
     }
-    
     calculate_map_size(lines, &vars->map.width, &vars->map.height);
     pad_lines_with_spaces(lines, vars->map.width);
     int	k = 0;
